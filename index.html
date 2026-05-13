@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloudy Peaks Butchery | Premium Local Meats — Timaru</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary:      #140e08;
+      --primary-mid:  #1f1510;
+      --primary-light:#2e1e12;
+      --accent:       #bf3a1e;
+      --accent-dark:  #962d16;
+      --accent-light: #d9512e;
+      --off-white:    #f6f2ec;
+      --card-bg:      #ffffff;
+      --text-dark:    #1a1208;
+      --text-mid:     #4a3f35;
+      --text-light:   #7a6b5d;
+      --border:       #e8ddd3;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 0;
+      transition: background 0.35s ease, box-shadow 0.35s ease;
+    }
+    nav.scrolled {
+      background: rgba(20,14,8,0.96);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1rem;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      padding-left: 0.25rem;
+    }
+    .nav-logo span { color: var(--accent-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #fff !important;
+      padding: 0.55rem 1.35rem !important;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: background 0.25s, transform 0.2s !important;
+      margin-right: 0.25rem;
+    }
+    .nav-cta:hover {
+      background: var(--accent-light) !important;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding-right: 0.25rem;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        125deg,
+        rgba(20,14,8,0.88) 0%,
+        rgba(32,22,12,0.70) 55%,
+        rgba(191,58,30,0.12) 100%
+      );
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 6vw;
+      max-width: 780px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(191,58,30,0.22);
+      border: 1px solid rgba(217,81,46,0.45);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #ffcab4;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3.2rem, 6.5vw, 5.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 span { color: var(--accent-light); }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.72);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(191,58,30,0.4);
+    }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      color: rgba(255,255,255,0.88);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.35);
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 6vw;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* ── SECTION UTILS ── */
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.65rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 0.975rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      max-width: 500px;
+    }
+
+    /* ── ABOUT STRIP ── */
+    .about-strip {
+      background: var(--primary);
+      padding: 6rem 6vw 7rem;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    }
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-text .section-label { color: var(--accent-light); }
+    .about-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.9rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.25rem;
+    }
+    .about-text h2 span { color: var(--accent-light); }
+    .about-text p {
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .about-text p:last-of-type { margin-bottom: 1.75rem; }
+
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-wrap img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 1.25rem 1.6rem;
+      border-radius: 14px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      line-height: 1.1;
+      box-shadow: 0 10px 28px rgba(191,58,30,0.45);
+    }
+    .about-badge small {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 0.72rem;
+      opacity: 0.8;
+      margin-top: 0.2rem;
+    }
+
+    /* ── SERVICES ── */
+    .services {
+      padding: 8rem 6vw 6rem;
+      background: var(--off-white);
+    }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      border-color: transparent;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(191,58,30,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 0.55rem;
+    }
+    .service-card p {
+      font-size: 0.86rem;
+      color: var(--text-light);
+      line-height: 1.75;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      background: var(--primary);
+      padding: 7rem 6vw;
+      clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+    }
+    .gallery-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+    .gallery-header .section-label { color: var(--accent-light); }
+    .gallery-header .section-title { color: #fff; }
+    .gallery-header .section-sub {
+      color: rgba(255,255,255,0.55);
+      margin: 0 auto;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 260px 260px;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .g-item {
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .g-item:first-child {
+      grid-row: span 2;
+    }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+    .g-item:hover img { transform: scale(1.05); }
+
+    /* ── REVIEWS ── */
+    .reviews {
+      padding: 6rem 6vw;
+      background: var(--off-white);
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .reviews-rating-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin: 0.75rem 0 0.3rem;
+    }
+    .rating-big {
+      font-family: 'Syne', sans-serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+    .stars-row {
+      display: flex;
+      gap: 0.2rem;
+    }
+    .star { color: #f59e0b; font-size: 1.15rem; }
+    .rating-sub {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+    }
+    .google-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-mid);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.09);
+    }
+    .review-stars { display: flex; gap: 0.2rem; margin-bottom: 0.9rem; }
+    .review-stars span { color: #f59e0b; font-size: 0.9rem; }
+    .review-text {
+      font-size: 0.875rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .review-author { display: flex; align-items: center; gap: 0.75rem; }
+    .review-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .review-name { font-weight: 600; font-size: 0.85rem; color: var(--text-dark); }
+    .review-date { font-size: 0.72rem; color: var(--text-light); }
+
+    /* ── CONTACT ── */
+    .contact {
+      padding: 6rem 6vw 7rem;
+      background: var(--primary);
+      clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%);
+      padding-top: 9rem;
+    }
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 5rem;
+      align-items: start;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .contact-text .section-label { color: var(--accent-light); }
+    .contact-text .section-title { color: #fff; }
+    .contact-text .section-sub {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 2.5rem;
+    }
+    .c-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .c-icon {
+      width: 44px; height: 44px;
+      background: rgba(191,58,30,0.2);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+    .c-detail strong {
+      display: block;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+    .c-detail span {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+    }
+
+    .form-wrap {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2.5rem 2.25rem;
+      backdrop-filter: blur(10px);
+    }
+    .form-wrap h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.75rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+    }
+    form input::placeholder,
+    form textarea::placeholder { color: rgba(255,255,255,0.32); }
+    form select option { background: var(--primary); color: #fff; }
+    form input:focus,
+    form select:focus,
+    form textarea:focus { border-color: var(--accent-light); }
+    form textarea { height: 120px; resize: vertical; }
+    form .btn-primary {
+      width: 100%;
+      justify-content: center;
+      font-size: 0.975rem;
+      padding: 1rem 1.5rem;
+      margin-top: 0.25rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary-mid);
+      padding: 3rem 6vw 2rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--accent-light); }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+    .footer-phone {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.84rem;
+      transition: color 0.2s;
+    }
+    .footer-phone:hover { color: #fff; }
+    .footer-copy {
+      text-align: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.72rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0;
+        width: 100%;
+        background: rgba(20,14,8,0.98);
+        flex-direction: column;
+        padding: 1.5rem 5vw;
+        gap: 1.25rem;
+        border-top: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about-img-wrap { order: -1; }
+      .about-badge { bottom: auto; top: 1rem; left: auto; right: 1rem; }
+
+      .services-header { flex-direction: column; align-items: flex-start; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .g-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+        height: 280px;
+      }
+      .g-item { height: 220px; }
+
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 580px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .g-item:first-child { grid-column: span 1; height: 240px; }
+      .g-item { height: 200px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ NAV ══════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Cloudy Peaks <span>Butchery</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Our Meats</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Order Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🥩 Timaru's Local Butcher</div>
+    <h1>Cloudy Peaks<br><span>Butchery</span></h1>
+    <p class="hero-sub">Premium NZ beef, lamb, pork, and sausages — prepared fresh daily by people who know their craft. Proudly local in Timaru.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Place an Order →</a>
+      <a href="#services" class="btn-outline">View Our Cuts</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ══════════════ ABOUT ══════════════ -->
+<section class="about-strip" id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <p class="section-label">About Us</p>
+      <h2>Your local butcher,<br><span>done the right way</span></h2>
+      <p>At Cloudy Peaks Butchery, great meat is what we do. We source quality New Zealand beef, lamb, pork, and poultry and prepare every cut fresh in-store with the kind of care and skill that only a true local butcher can offer.</p>
+      <p>Whether you're planning a Sunday roast, stocking up the freezer, or hunting the perfect steak for the weekend BBQ, we'll help you find exactly what you need — and make sure it's worth coming back for.</p>
+      <a href="#services" class="btn-primary">Explore Our Range</a>
+    </div>
+    <div class="about-img-wrap reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=900&q=80" alt="Cloudy Peaks Butchery counter in Timaru" />
+      <div class="about-badge">
+        Locally Sourced
+        <small>New Zealand Quality</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES ══════════════ -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="reveal">
+      <p class="section-label">What We Offer</p>
+      <h2 class="section-title">Premium cuts for<br>every occasion</h2>
+    </div>
+    <p class="section-sub reveal delay-2">From everyday dinners to big weekend feeds, we stock the freshest, finest meat Timaru has to offer.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🥩</div>
+      <h3>Beef &amp; Steak</h3>
+      <p>Eye fillet, scotch, sirloin, rump, blade — we cut to order. Premium NZ beef sourced from trusted farms and prepared the way you want it.</p>
+    </div>
+    <div class="service-card reveal delay-1">
+      <div class="service-icon">🐑</div>
+      <h3>Lamb &amp; Hogget</h3>
+      <p>New Zealand lamb at its finest. Legs, shoulders, racks, chops — tender, flavoursome cuts straight from local farms to your plate.</p>
+    </div>
+    <div class="service-card reveal delay-2">
+      <div class="service-icon">🐖</div>
+      <h3>Pork</h3>
+      <p>Fresh pork belly, loin, ribs, and roasting joints. Perfect for the slow cooker, weekend roast, or the backyard smoker.</p>
+    </div>
+    <div class="service-card reveal delay-1">
+      <div class="service-icon">🍗</div>
+      <h3>Chicken &amp; Poultry</h3>
+      <p>Fresh free-range chicken in every cut — whole birds, thighs, breasts, mince, and more. Always fresh, never frozen.</p>
+    </div>
+    <div class="service-card reveal delay-2">
+      <div class="service-icon">🌭</div>
+      <h3>Sausages &amp; Smallgoods</h3>
+      <p>Made in-store using traditional recipes. Our handcrafted sausages are a local favourite and a Cloudy Peaks staple — try them once and you'll keep coming back.</p>
+    </div>
+    <div class="service-card reveal delay-3">
+      <div class="service-icon">📦</div>
+      <h3>Bulk &amp; Freezer Packs</h3>
+      <p>Stock up and save. We offer great value bulk packs of beef, lamb, and pork — perfect for families and serious home cooks who know what they want.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ GALLERY ══════════════ -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <p class="section-label">Fresh Every Day</p>
+    <h2 class="section-title">Quality you can see</h2>
+    <p class="section-sub">Every cut is prepared fresh in-store by our team. Come in and see the difference that local craft and quality sourcing makes.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="g-item reveal">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80" alt="Butcher preparing fresh cuts at Cloudy Peaks" />
+    </div>
+    <div class="g-item reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=700&q=80" alt="Premium NZ beef steak" />
+    </div>
+    <div class="g-item reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80" alt="Grilled meats on the BBQ" />
+    </div>
+    <div class="g-item reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1602526429747-f1d3fcb4bc81?w=700&q=80" alt="Fresh cut beef ready for sale" />
+    </div>
+    <div class="g-item reveal delay-3">
+      <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=700&q=80" alt="Fresh lamb cuts at Cloudy Peaks Butchery" />
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ REVIEWS ══════════════ -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header reveal">
+    <p class="section-label">What Customers Say</p>
+    <h2 class="section-title">Loved by locals<br>across Timaru</h2>
+    <div class="reviews-rating-row">
+      <div class="rating-big">5.0</div>
+      <div>
+        <div class="stars-row">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+    </div>
+    <p class="rating-sub">Based on Google Reviews</p>
+    <div class="google-chip">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      Google Reviews
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card reveal">
+      <div class="review-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="review-text">"Best butcher in Timaru, no question. The steaks are always perfectly cut and the staff actually know what they're talking about. I won't shop anywhere else for my meat."</p>
+      <div class="review-author">
+        <div class="review-avatar">MR</div>
+        <div>
+          <div class="review-name">Mark R.</div>
+          <div class="review-date">2 weeks ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal delay-1">
+      <div class="review-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="review-text">"The sausages from Cloudy Peaks are genuinely incredible — my whole family goes mad for them. Friendly, helpful service every single visit. Highly recommend."</p>
+      <div class="review-author">
+        <div class="review-avatar">SJ</div>
+        <div>
+          <div class="review-name">Sarah J.</div>
+          <div class="review-date">1 month ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal delay-2">
+      <div class="review-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p class="review-text">"Grabbed a bulk beef pack for the freezer and was blown away by the quality and value. Beautifully packaged, fresh as anything. I'll be getting one every month from now on."</p>
+      <div class="review-author">
+        <div class="review-avatar">TW</div>
+        <div>
+          <div class="review-name">Tom W.</div>
+          <div class="review-date">3 weeks ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title" style="color:#fff;">Ready to order?<br>Let's talk meat.</h2>
+      <p class="section-sub">Drop us a message, give us a call, or come in and see us. We're always happy to help — whether it's a quick question or a big order.</p>
+
+      <div class="c-detail reveal">
+        <div class="c-icon">📍</div>
+        <div>
+          <strong>Location</strong>
+          <span>Timaru, New Zealand</span>
+        </div>
+      </div>
+      <div class="c-detail reveal delay-1">
+        <div class="c-icon">📞</div>
+        <div>
+          <strong>Phone</strong>
+          <span>027 232 2158</span>
+        </div>
+      </div>
+      <div class="c-detail reveal delay-2">
+        <div class="c-icon">✉️</div>
+        <div>
+          <strong>Email</strong>
+          <span>cloudypeaksbutchery@outlook.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-wrap reveal delay-2">
+      <h3>Send us a message</h3>
+      <form action="https://api.staticforms.xyz/submit" method="post">
+        <input type="hidden" name="apiKey" value="sf_768da8d33927e7f4f241d0a6">
+        <div class="form-row">
+          <input type="text" name="firstName" placeholder="First Name" required>
+          <input type="text" name="lastName" placeholder="Last Name" required>
+        </div>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="text" name="phone" placeholder="Phone Number">
+        <select name="service" required>
+          <option value="" disabled selected>What are you after?</option>
+          <option value="beef-steak">Beef &amp; Steak</option>
+          <option value="lamb-hogget">Lamb &amp; Hogget</option>
+          <option value="pork">Pork</option>
+          <option value="chicken-poultry">Chicken &amp; Poultry</option>
+          <option value="sausages-smallgoods">Sausages &amp; Smallgoods</option>
+          <option value="bulk-freezer-pack">Bulk / Freezer Pack</option>
+          <option value="custom-order">Custom Order</option>
+          <option value="other">Other / General Enquiry</option>
+        </select>
+        <textarea name="message" placeholder="Tell us about your order or enquiry..." required></textarea>
+        <button type="submit" class="btn-primary">Send Enquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">Cloudy Peaks <span>Butchery</span></a>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Our Meats</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:02723222158" class="footer-phone">027 232 2158</a>
+  </div>
+  <div class="footer-copy">
+    © 2025 Cloudy Peaks Butchery. All rights reserved. | Timaru, New Zealand
+  </div>
+</footer>
+
+<script>
+  // Sticky nav
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a =>
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'))
+  );
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
