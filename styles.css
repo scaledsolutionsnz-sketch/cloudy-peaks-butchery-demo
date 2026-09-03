@@ -100,25 +100,36 @@ section{padding:clamp(66px,9vw,120px) 0}
 .hero-plate{
   position:fixed;inset:0;z-index:0;
   background:#0a0908 url('img/hero-cabinet.jpg') center 42% / cover no-repeat;
+  filter:brightness(1.14) saturate(1.06) contrast(1.02);
 }
+/* Two jobs, kept apart: a light veil under the nav, and a bottom fade that
+   hands off to the black page. The copy gets its own local scrim below,
+   so the photograph itself stays open. */
 .hero-plate::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(180deg,rgba(10,9,8,.78) 0%,rgba(10,9,8,.22) 30%,rgba(10,9,8,.55) 72%,rgba(10,9,8,.92) 100%),
-    linear-gradient(96deg,rgba(8,7,6,.92) 0%,rgba(8,7,6,.62) 42%,rgba(8,7,6,.12) 78%);
+    linear-gradient(180deg,rgba(10,9,8,.42) 0%,rgba(10,9,8,.04) 22%,rgba(10,9,8,0) 52%,rgba(10,9,8,.30) 82%,rgba(10,9,8,.88) 100%),
+    linear-gradient(96deg,rgba(8,7,6,.34) 0%,rgba(8,7,6,.10) 38%,rgba(8,7,6,0) 66%);
 }
 .hero{
   position:relative;z-index:1;
   min-height:min(100svh,940px);display:flex;align-items:flex-end;
 }
+.hero::before{
+  content:"";position:absolute;inset:auto 0 0 0;height:84%;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,7,6,0) 0%,rgba(8,7,6,.10) 26%,rgba(8,7,6,.40) 58%,rgba(8,7,6,.74) 100%),
+    linear-gradient(92deg,rgba(8,7,6,.72) 0%,rgba(8,7,6,.44) 30%,rgba(8,7,6,.14) 54%,rgba(8,7,6,0) 72%);
+}
+.hero-inner{position:relative}
 .hero-inner{width:100%;max-width:var(--maxw);margin:0 auto;padding:148px var(--pad) clamp(40px,5vw,64px)}
 .hero h1{
   font-size:clamp(2.9rem,8vw,6rem);font-weight:900;margin-bottom:24px;
-  text-shadow:0 4px 50px rgba(0,0,0,.75);
+  text-shadow:0 2px 6px rgba(0,0,0,.42),0 6px 54px rgba(0,0,0,.7);
 }
 .hero .lede{
   color:#e4dccf;font-size:clamp(1rem,1.3vw,1.1rem);max-width:48ch;margin-bottom:32px;
-  text-shadow:0 1px 18px rgba(0,0,0,.8);
+  text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 22px rgba(0,0,0,.85);
 }
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:clamp(34px,4.5vw,52px)}
 
@@ -148,7 +159,7 @@ section{padding:clamp(66px,9vw,120px) 0}
 .quote blockquote{
   font-size:clamp(.98rem,1.3vw,1.08rem);font-weight:500;line-height:1.5;
   color:var(--bone);max-width:52ch;letter-spacing:.002em;
-  text-shadow:0 1px 16px rgba(0,0,0,.8);
+  text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 20px rgba(0,0,0,.85);
 }
 .quote blockquote::before{content:"\201C"}
 .quote blockquote::after{content:"\201D"}
@@ -293,6 +304,7 @@ section{padding:clamp(66px,9vw,120px) 0}
 @media(max-width:780px){
   /* fixed backgrounds are unreliable on mobile browsers — pin the tall crop instead */
   .hero-plate{position:absolute;height:100svh;background-image:url('img/hero-cabinet-tall.jpg');background-position:center 38%}
+  .hero::before{height:64%}
   .hero{min-height:100svh}
 }
 @media(max-width:620px){
