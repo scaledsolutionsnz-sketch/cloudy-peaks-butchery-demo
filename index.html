@@ -11,14 +11,15 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cloudy Peaks Butchery | Craft Butcher, West End, Timaru">
 <meta property="og:description" content="Fresh cuts, house-made sausages and ready-to-cook meals from a real butchery in West End, Timaru. Our paddock to your plate.">
-<meta property="og:image" content="https://cloudy-peaks-butchery-demo.vercel.app/img/cuts.jpg">
+<meta property="og:image" content="https://cloudy-peaks-butchery-demo.vercel.app/img/hero-cabinet.jpg">
 <meta property="og:url" content="https://cloudy-peaks-butchery-demo.vercel.app/">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230a0908'/%3E%3Ctext x='50' y='70' font-size='52' text-anchor='middle' fill='%23c8a24c' font-family='Georgia,serif' font-weight='bold'%3ECP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-cabinet.jpg" media="(min-width:781px)">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700;6..96,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
 <script type="application/ld+json">
@@ -43,136 +44,148 @@
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- Drawn icon set: one library, one stroke weight, no unicode glyphs. -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <symbol id="i-star" viewBox="0 0 24 24">
+    <path d="m12 2.6 2.94 5.96 6.58.96-4.76 4.64 1.12 6.55L12 17.62l-5.88 3.09 1.12-6.55L2.48 9.52l6.58-.96L12 2.6Z"/>
+  </symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24">
+    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>
+  </symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24">
+    <path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/>
+  </symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-van" viewBox="0 0 24 24">
+    <rect x="1" y="6" width="14" height="11" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/>
+    <circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<!-- Fixed hero plate. The page scrolls up over it: the one authored moment. -->
+<div class="hero-plate" aria-hidden="true"></div>
+
 <nav class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Cloudy Peaks Butchery">
-    <img src="img/logo.png" alt="Cloudy Peaks Butchery — our paddock to your plate" width="1400" height="503">
+    <img src="img/logo.png" alt="Cloudy Peaks Butchery, our paddock to your plate" width="1400" height="503">
   </a>
   <div class="nav-links" id="navLinks">
     <a href="#counter">The Counter</a>
     <a href="#ready">Ready to Cook</a>
     <a href="#homekill">Home Kill</a>
     <a href="#gallery">Gallery</a>
-    <a href="#heritage">Our Story</a>
-    <a href="#about">About</a>
+    <a href="#story">Our Story</a>
     <a href="#visit">Visit</a>
     <a class="nav-phone" href="tel:+64272322158">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-      027 232 2158
+      <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>027 232 2158
     </a>
   </div>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    <svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>
   </button>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header class="hero">
-  <div class="hero-media" aria-hidden="true">
-    <img src="img/cuts.jpg" alt="" width="1700" height="1275" fetchpriority="high">
-  </div>
   <div class="hero-inner">
-    <p class="eyebrow">West End &middot; Timaru</p>
-    <h1><span class="gold-text">Our paddock</span><br>to your plate.</h1>
-    <p class="lede">A real butchery on the corner of Church Street. Whole carcasses broken down in
-      house, sausages made on site, and a counter worth crossing town for.</p>
+    <h1>Our paddock<br>to your plate.</h1>
+    <p class="lede">A working butchery on the corner of Church Street, West End. Whole carcasses
+      broken down in house, sausages made on site, and a counter worth crossing town for.</p>
     <div class="hero-cta">
       <a class="btn btn--gold" href="#counter">See what's in the counter</a>
       <a class="btn btn--ghost" href="tel:+64272322158">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-        Call the shop
+        <svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>Call the shop
       </a>
+    </div>
+
+    <!-- Real reviews, verbatim from the Google Business Profile. -->
+    <div class="verdict">
+      <a class="verdict-score" href="https://www.google.com/maps/place/Cloudy+Peaks+Butchery/@-44.3958283,171.2296862,17z" target="_blank" rel="noopener">
+        <span class="stars" role="img" aria-label="Rated 4.6 out of 5">
+          <svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="ic" aria-hidden="true"><use href="#i-star"/></svg>
+          <svg class="ic is-half" aria-hidden="true"><use href="#i-star"/></svg>
+        </span>
+        <b>4.6</b>
+        <span class="verdict-count">48 Google reviews</span>
+      </a>
+      <div class="verdict-quotes" id="quotes">
+        <figure class="quote is-on">
+          <blockquote>Brilliant service, great cuts of meat for a great price. Definitely recommend</blockquote>
+          <figcaption>Will L.</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Top quality mince and very good fresh brisket</blockquote>
+          <figcaption>Diane W.</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Friendly staff very knowledgeable and great quality meat</blockquote>
+          <figcaption>Jireh H.</figcaption>
+        </figure>
+        <figure class="quote">
+          <blockquote>Great to have this shop back in our community. Excellent cuts and quality of meat</blockquote>
+          <figcaption>Wendy G.</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ===== STAT BAR ===== -->
-<section class="stats" style="padding:0">
-  <div class="stats-grid">
-    <div class="stat">
-      <b class="gold-text">4.6 <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></b>
-      <span>From 48 Google reviews</span>
-    </div>
-    <div class="stat">
-      <b>305 Church Street</b>
-      <span>West End, Timaru &middot; on the corner</span>
-    </div>
-    <div class="stat">
-      <b>Home kill &amp; wholesale</b>
-      <span>Whole and half beasts, cut to your order</span>
-    </div>
-  </div>
-</section>
+<main class="page">
 
-<!-- ===== THE COUNTER ===== -->
 <section id="counter">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow center">What we do</span>
-      <h2>Everything comes off <span class="gold-text">our own block</span></h2>
+    <div class="lede-block">
+      <h2>Everything comes off our own block</h2>
       <p>Beef, lamb and pork broken down here, not delivered pre-portioned in a box. That is the
         difference you taste, and it is why the counter looks different every week.</p>
     </div>
-    <div class="counter-grid reveal">
-      <article class="ccard">
-        <span class="num">01</span>
-        <h3>Fresh cuts</h3>
-        <p>Broken down in house, trimmed properly, and cut to whatever thickness you actually want.</p>
-        <ul>
-          <li>Scotch, sirloin, eye fillet, rump</li>
-          <li>Frenched lamb racks and forequarter chops</li>
-          <li>Osso buco, shanks and slow-cook cuts</li>
-          <li>Rolled and netted roasts</li>
-        </ul>
-      </article>
-      <article class="ccard">
-        <span class="num">02</span>
-        <h3>Sausages &amp; smallgoods</h3>
-        <p>Made on site and hung in the chiller, in the flavours that keep selling out.</p>
-        <ul>
-          <li>Classic beef and pork bangers</li>
-          <li>Chorizo and spiced varieties</li>
-          <li>Bacon, ham and cured lines</li>
-          <li>Patties and gourmet mince</li>
-        </ul>
-      </article>
-      <article class="ccard">
-        <span class="num">03</span>
-        <h3>Ready to cook</h3>
-        <p>The marinating and stuffing already done, so a good dinner is twenty minutes away.</p>
-        <ul>
-          <li>Satay, honey soy and BBQ skewers</li>
-          <li>Beef pinwheels and cheeseburger spirals</li>
-          <li>Bacon-wrapped stuffed chicken</li>
-          <li>Marinated pork belly and ribs</li>
-        </ul>
-      </article>
-      <article class="ccard">
-        <span class="num">04</span>
-        <h3>Deli &amp; sides</h3>
-        <p>The bits that finish the plate, made fresh alongside everything else.</p>
-        <ul>
-          <li>Pasta and potato salads</li>
-          <li>Slow-cooked beef and pulled meats</li>
-          <li>Platters and party trays to order</li>
-          <li>Freezer packs and bulk buys</li>
-        </ul>
-      </article>
-    </div>
+
+    <dl class="board">
+      <div class="board-row">
+        <dt>Fresh cuts</dt>
+        <dd>
+          <p>Broken down in house, trimmed properly, and cut to whatever thickness you actually want.</p>
+          <p class="board-items">Scotch, sirloin, eye fillet, rump &middot; Frenched lamb racks &middot;
+            Forequarter chops &middot; Osso buco, shanks and slow-cook cuts &middot; Rolled and netted roasts</p>
+        </dd>
+      </div>
+      <div class="board-row">
+        <dt>Sausages &amp; smallgoods</dt>
+        <dd>
+          <p>Made on site and hung in the chiller, in the flavours that keep selling out.</p>
+          <p class="board-items">Classic beef and pork bangers &middot; Chorizo and spiced varieties &middot;
+            Bacon and ham &middot; Patties and gourmet mince</p>
+        </dd>
+      </div>
+      <div class="board-row">
+        <dt>Ready to cook</dt>
+        <dd>
+          <p>The marinating and stuffing already done, so a good dinner is twenty minutes away.</p>
+          <p class="board-items">Satay, honey soy and BBQ skewers &middot; Beef pinwheels &middot;
+            Bacon-wrapped stuffed chicken &middot; Marinated pork belly and ribs</p>
+        </dd>
+      </div>
+      <div class="board-row">
+        <dt>Deli &amp; sides</dt>
+        <dd>
+          <p>The bits that finish the plate, made fresh alongside everything else.</p>
+          <p class="board-items">Pasta and potato salads &middot; Slow-cooked beef and pulled meats &middot;
+            Platters and party trays to order &middot; Freezer packs and bulk buys</p>
+        </dd>
+      </div>
+    </dl>
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== READY TO COOK ===== -->
 <section id="ready">
   <div class="wrap">
-
-    <div class="feat reveal">
+    <div class="feat">
       <div class="feat-copy">
-        <span class="eyebrow">Ready to cook</span>
         <h2>Dinner, most of the way there</h2>
-        <p>Trays of skewers glazed and dusted the morning they go out — satay, honey soy, smoky BBQ.
+        <p>Trays of skewers glazed and dusted the morning they go out: satay, honey soy, smoky BBQ.
           Straight onto a hot barbecue or a pan, nothing else needed.</p>
         <p>It is the same meat that sits in the cabinet as steak. We just did the fiddly part for you.</p>
         <ul>
@@ -186,15 +199,14 @@
       </div>
     </div>
 
-    <div class="feat feat--flip reveal">
+    <div class="feat feat--flip">
       <div class="feat-copy">
-        <span class="eyebrow">House specialty</span>
         <h2>Pinwheels and stuffed cuts</h2>
-        <p>Beef spirals rolled with cheese, jalapeño and herbs, and chicken breasts wrapped in streaky
-          bacon with cranberry or apricot through the middle.</p>
+        <p>Beef spirals rolled with cheese, jalape&ntilde;o and herbs, and chicken breasts wrapped in
+          streaky bacon with cranberry or apricot through the middle.</p>
         <p>They look like a lot of effort and they take none. Into a dish, into the oven, done.</p>
         <ul>
-          <li>Cheeseburger, garlic herb and jalapeño pinwheels</li>
+          <li>Cheeseburger, garlic herb and jalape&ntilde;o pinwheels</li>
           <li>Cranberry and apricot bacon-wrapped chicken</li>
           <li>Priced per piece so you buy exactly what you need</li>
         </ul>
@@ -203,21 +215,16 @@
         <img src="img/pinwheels.jpg" alt="Cloudy Peaks beef pinwheels packed and labelled on the bench" width="1448" height="1086" loading="lazy">
       </div>
     </div>
-
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== HOME KILL & WHOLESALE ===== -->
-<section id="homekill">
+<section id="homekill" class="band">
   <div class="wrap">
-    <div class="feat reveal">
+    <div class="feat">
       <div class="feat-copy">
-        <span class="eyebrow">Home kill &amp; wholesale</span>
         <h2>Your beast, cut your way</h2>
         <p>Bring us your animal and tell us how your family eats. We hang it, break it down and pack it
-          the way you want it — steak thickness, roast size, how much mince, how many sausages.</p>
+          the way you want it: steak thickness, roast size, how much mince, how many sausages.</p>
         <p>Everything comes back labelled and boxed, ready for the freezer, with nothing swapped out
           along the way. What goes in is what comes home.</p>
         <ul>
@@ -226,9 +233,7 @@
           <li>Sausages and patties made from your own trim</li>
           <li>Vacuum packed, labelled and boxed for the freezer</li>
         </ul>
-        <div class="hero-cta" style="margin-top:28px">
-          <a class="btn btn--gold" href="tel:+64272322158">Talk to us about home kill</a>
-        </div>
+        <p class="feat-cta"><a class="btn btn--gold" href="tel:+64272322158">Talk to us about home kill</a></p>
       </div>
       <div class="feat-media">
         <img src="img/chiller.jpg" alt="A side of beef hanging on the rail in the Cloudy Peaks chiller" width="1200" height="1500" loading="lazy">
@@ -237,20 +242,16 @@
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== GALLERY ===== -->
 <section id="gallery">
   <div class="wrap">
-    <div class="sec-head center reveal">
-      <span class="eyebrow center">The shop</span>
-      <h2>Have a look in <span class="gold-text">the cabinet</span></h2>
+    <div class="lede-block">
+      <h2>Have a look in the cabinet</h2>
       <p>No stock photography. This is the counter, the chiller and the bench, on an ordinary week.</p>
     </div>
-    <div class="gal reveal">
+    <div class="gal">
       <figure class="tall">
-        <img src="img/cabinet.jpg" alt="The full display cabinet: mince, steaks, marinated ribs, lamb legs and rolled roasts" width="1086" height="1448" loading="lazy">
-        <figcaption>The cabinet, mid-morning</figcaption>
+        <img src="img/cuts-tile.jpg" alt="Lamb racks, forequarter chops, scotch fillet and osso buco laid out on the bench" width="900" height="1382" loading="lazy">
+        <figcaption>Cut to order, on the bench</figcaption>
       </figure>
       <figure>
         <img src="img/sausages.jpg" alt="Strings of house-made sausages hanging on hooks in the chiller" width="1122" height="1402" loading="lazy">
@@ -276,27 +277,23 @@
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== HERITAGE ===== -->
-<section id="heritage" class="heritage">
+<section id="story" class="band">
   <div class="wrap">
-    <div class="feat feat--flip reveal">
+    <div class="feat feat--flip">
       <div class="feat-copy">
-        <span class="eyebrow">Since the 1800s</span>
-        <h2>One of the oldest butcher shops <span class="gold-text">in the country</span></h2>
+        <h2>One of the oldest butcher shops in the country</h2>
         <p>There has been a butcher working on the corner of Rathmore and Church Streets since the late
           1800s. Generations of Timaru families have bought their Sunday roast off this corner.</p>
         <p>When Burgers Butchery closed its doors in February 2024, that run stopped for the first time
           in well over a century. The building sat quiet for seven months.</p>
         <p>In September 2024 the lights went back on. Marie Murdoch and her husband Kine reopened the
-          site as Cloudy Peaks Butchery &mdash; an independent butcher back on the corner, doing the job
-          the way it has always been done here.</p>
-        <div class="heritage-facts">
-          <div><b class="gold-text">Late 1800s</b><span>A butcher on this corner</span></div>
-          <div><b class="gold-text">Feb 2024</b><span>Burgers Butchery closes</span></div>
-          <div><b class="gold-text">Sep 2024</b><span>Reopens as Cloudy Peaks</span></div>
-        </div>
+          site as Cloudy Peaks Butchery, an independent butcher back on the corner, doing the job the
+          way it has always been done here.</p>
+        <ol class="timeline">
+          <li><b>Late 1800s</b><span>A butcher on this corner</span></li>
+          <li><b>Feb 2024</b><span>Burgers Butchery closes</span></li>
+          <li><b>Sep 2024</b><span>Reopens as Cloudy Peaks</span></li>
+        </ol>
         <p class="source-note">Reported by <cite>The Press</cite> / <cite>Timaru Herald</cite>,
           30 September 2024.</p>
       </div>
@@ -307,27 +304,23 @@
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== ABOUT ===== -->
 <section id="about">
   <div class="wrap">
-    <div class="about reveal">
-      <div class="about-copy">
-        <span class="eyebrow">About us</span>
+    <div class="feat">
+      <div class="feat-copy">
         <h2>A butchery, not a meat counter</h2>
-        <p>Cloudy Peaks Butchery sits on the corner of Church Street in West End, Timaru — the black
+        <p>Cloudy Peaks Butchery sits on the corner of Church Street in West End, Timaru, the black
           building you have driven past a hundred times. Inside it is a working butchery: rails, hooks,
           a block, and people who know how to use them.</p>
         <p>We take whole animals and break them down ourselves. That is a slower way to run a shop, and
           it is the reason we can cut a steak to the thickness you ask for, put your own trim through
           the sausage filler, and tell you exactly where a piece of meat came from.</p>
-        <div class="pull">"Our paddock to your plate" is on the sign because it is the whole idea, not
-          a tagline we bolted on afterwards.</div>
+        <blockquote class="pull">"Our paddock to your plate" is on the sign because it is the whole
+          idea, not a tagline we bolted on afterwards.</blockquote>
         <p>South Canterbury has good farmers and it deserves a butcher who does the job properly. That
           is what we turn up for.</p>
       </div>
-      <figure class="about-media">
+      <figure class="feat-media wide">
         <img src="img/awards.jpg" alt="The Cloudy Peaks team at the Canterbury business awards" width="1448" height="1086" loading="lazy">
         <figcaption>The team out at the Canterbury business awards.</figcaption>
       </figure>
@@ -335,27 +328,24 @@
   </div>
 </section>
 
-<div class="rule"></div>
-
-<!-- ===== VISIT ===== -->
-<section id="visit">
+<section id="visit" class="band">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">Visit</span>
+    <div class="lede-block">
       <h2>Come in and have a look</h2>
-      <p>The black corner building at Rathmore and Church Streets, West End. Street parking right outside.</p>
+      <p>The black corner building at Rathmore and Church Streets, West End. Street parking right
+        outside.</p>
     </div>
-    <div class="visit reveal">
+    <div class="visit">
       <div class="visit-info">
         <div class="vrow">
-          <div class="vic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <svg class="ic vic" aria-hidden="true"><use href="#i-pin"/></svg>
           <div>
             <b>Find us</b>
             <a href="https://www.google.com/maps/place/Cloudy+Peaks+Butchery/@-44.3958283,171.2296862,17z" target="_blank" rel="noopener">305 Church Street, West End, Timaru 7910</a>
           </div>
         </div>
         <div class="vrow">
-          <div class="vic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></div>
+          <svg class="ic vic" aria-hidden="true"><use href="#i-phone"/></svg>
           <div>
             <b>Phone</b>
             <a href="tel:+64272322158">027 232 2158</a>
@@ -366,18 +356,18 @@
              confirmed this links to the Google listing, so whatever a visitor
              sees is the live, correct hours rather than a guess baked into HTML. -->
         <div class="vrow">
-          <div class="vic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <svg class="ic vic" aria-hidden="true"><use href="#i-clock"/></svg>
           <div>
             <b>Hours</b>
-            <a href="https://www.google.com/maps/place/Cloudy+Peaks+Butchery/@-44.3958283,171.2296862,17z" target="_blank" rel="noopener">See today's hours on Google &rarr;</a>
+            <a href="https://www.google.com/maps/place/Cloudy+Peaks+Butchery/@-44.3958283,171.2296862,17z" target="_blank" rel="noopener">See today's hours on Google</a>
             <small>Hours change seasonally, so the listing is the one to trust.</small>
           </div>
         </div>
         <div class="vrow">
-          <div class="vic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="6" width="14" height="11" rx="1.5"/><path d="M15 10h4l3 3v4h-7z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/></svg></div>
+          <svg class="ic vic" aria-hidden="true"><use href="#i-van"/></svg>
           <div>
             <b>Delivery</b>
-            <span>Delivery available — give us a call to arrange it.</span>
+            <span>Delivery available, give us a call to arrange it.</span>
           </div>
         </div>
       </div>
@@ -391,7 +381,6 @@
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer-top">
     <div>
@@ -405,8 +394,7 @@
       <a href="#ready">Ready to Cook</a>
       <a href="#homekill">Home Kill</a>
       <a href="#gallery">Gallery</a>
-      <a href="#heritage">Our Story</a>
-      <a href="#about">About</a>
+      <a href="#story">Our Story</a>
       <a href="#visit">Visit</a>
     </div>
     <div class="footer-col">
@@ -422,6 +410,8 @@
     <span>Our paddock to your plate</span>
   </div>
 </footer>
+
+</main>
 
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 <script src="main.js"></script>

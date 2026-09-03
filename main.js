@@ -2,12 +2,10 @@
 (function () {
   'use strict';
 
-  // nav gets a hairline and tightens once you leave the hero
+  // nav gains its hairline once you leave the hero plate
   var nav = document.getElementById('nav');
   if (nav) {
-    var onScroll = function () {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-    };
+    var onScroll = function () { nav.classList.toggle('scrolled', window.scrollY > 60); };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
@@ -31,16 +29,23 @@
     });
   }
 
-  // scroll reveal
-  var rev = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && rev.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  // hero reviews rotate; paused for reduced motion and while the tab is hidden
+  var wrap = document.getElementById('quotes');
+  if (wrap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var quotes = wrap.querySelectorAll('.quote');
+    if (quotes.length > 1) {
+      var i = 0, timer = null;
+      var step = function () {
+        quotes[i].classList.remove('is-on');
+        i = (i + 1) % quotes.length;
+        quotes[i].classList.add('is-on');
+      };
+      var start = function () { if (!timer) timer = setInterval(step, 5200); };
+      var stop = function () { clearInterval(timer); timer = null; };
+      document.addEventListener('visibilitychange', function () {
+        document.hidden ? stop() : start();
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    rev.forEach(function (el) { io.observe(el); });
-  } else {
-    rev.forEach(function (el) { el.classList.add('in'); });
+      start();
+    }
   }
 })();
